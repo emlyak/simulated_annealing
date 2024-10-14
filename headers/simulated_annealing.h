@@ -1,24 +1,23 @@
-#include "dllexport.h"
-#include <numeric>
-#include <vector>
-#include <iterator>
-#include <algorithm>
-#include "Point.h"
 #include "metrics.hpp"
-#include <functional>
+#include "includes.h"
+#include "Point.h"
+#include <iostream>
 
+using vec_p = std::vector<Point>;
+using vec_ptr = std::vector<Point*>;
+using vec_d = std::vector<double>;
 
 DLL_ANNEALING_EXPORTS
 class Simulated_annealing
 {
-    using vec_p = std::vector<Point>;
-    using vec_d = std::vector<double>;
+
+public:
 
     static
-    vec_p salesman(
+    void salesman(
+        vec_p& points,
         double T,
         double coefficient,
-        vec_p& points,
         std::function<double(vec_d, vec_d)> metric = metrics::euclidian
     );
 

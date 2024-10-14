@@ -30,7 +30,7 @@ namespace metrics {
             y.begin(),
             0.,
             std::plus<>(),
-            [](double& a, double& b) {return std::abs(a - b);}
+            [](double a, double b) {return std::abs(a - b);}
         );
     };
     
