@@ -1,15 +1,5 @@
 #include "simulated_annealing.h"
 
-inline double rand_d()
-{
-    return (double)rand() / (double)RAND_MAX ;
-}
-
-inline int rand_i(int a, int b)
-{
-    return a + rand()%(b-a);
-}
-
 inline void swap(vec_p& v, int a, int b)
 {
     iter_swap(v.begin() + a, v.begin() + b);
@@ -22,11 +12,6 @@ inline double distance(vec_p& v,
     for (int i = 0; i < v.size() - 1; ++i)
         res += metric(v[i].coords, v[i+1].coords);
     return res + metric(v[0].coords, v[v.size()-1].coords);
-}
-
-inline bool stay(double T, double delta)
-{
-    return rand_d() < std::exp(delta / T);
 }
 
 void Simulated_annealing::salesman(

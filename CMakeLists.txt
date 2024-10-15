@@ -6,16 +6,17 @@ project(simulated_annealing
 
 set(CMAKE_CXX_STANDARD 17)
 
-file(GLOB_RECURSE SOURCES
-    "src/*,cpp"
-)
 set(SOURCES
     src/salesman.cpp
+    src/min.cpp
 )
 
 file(GLOB_RECURSE HEADERS
-    "headers/*.h"
-    "headers/*.hpp"
+    headers/dllexport.h
+    headers/includes.h
+    headers/metrics.hpp
+    headers/Pount.h
+    headers/simulated_annealing.h
 )
 
 add_compile_definitions(ANNEALING_EXPORTS)
