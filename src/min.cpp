@@ -9,14 +9,15 @@ double Simulated_annealing::min(
         double coefficient
 )
 {
-    std::uniform_real_distribution<double> unif(-10, 10);
+    std::uniform_real_distribution<double> unif(-100, 100);
     std::default_random_engine re;
     
     double oldPoint = unif(re);
     double oldValue = func(oldPoint);
 
     do
-    {
+    {   
+        std::uniform_real_distribution<double> unif(oldPoint - 100, oldPoint + 100);
         double newPoint = unif(re);
         double newValue = func(newPoint);
         
@@ -35,7 +36,6 @@ double Simulated_annealing::min(
         }
 
         t_start *= coefficient;
-        std::cout << "Energy = " << oldValue << "\n";
     }
     while (t_start > t_stop);
 

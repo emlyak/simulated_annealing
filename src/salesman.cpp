@@ -14,9 +14,10 @@ inline double distance(vec_p& v,
     return res + metric(v[0].coords, v[v.size()-1].coords);
 }
 
-void Simulated_annealing::salesman(
+double Simulated_annealing::salesman(
         vec_p& points,
         double T,
+        double TStop,
         double coefficient,
         std::function<double(vec_d, vec_d)> metric
     )
@@ -45,7 +46,8 @@ void Simulated_annealing::salesman(
             oldDistanse = newDistance;
 
         T *= coefficient;
-        // std::cout << "Energy = " << oldDistanse << "\n";
     }
-    while (T > 0.5);
+    while (T > TStop);
+
+    return oldDistanse;
 }

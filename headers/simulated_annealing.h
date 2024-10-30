@@ -36,14 +36,16 @@ public:
      * 
      *  @param points vector of points
      *  @param T start temperature
+     *  @param TStop temperature at the end of algorithm
      *  @param coefficient temperature down coefficient
      *  @param metric metric for calculating distance
-     *  @return point to local minimum
+     *  @return minimum Energy
      */
     static
-    void salesman(
+    double salesman(
         vec_p& points,
         double T,
+        double TStop,
         double coefficient,
         std::function<double(vec_d, vec_d)> metric = metrics::euclidian
     );
